@@ -11,11 +11,51 @@ import {
 } from "react-icons/fa";
 
 export default function Contact() {
-  const fadeUp = {
-    initial: { opacity: 0, y: 50, filter: "blur(6px)" },
-    whileInView: { opacity: 1, y: 0, filter: "blur(0px)" },
-    transition: { duration: 0.8, ease: "easeOut" },
-    viewport: { once: true },
+  /* 🚀 BUTTER-SMOOTH ANIMATION SYSTEM */
+  const smoothUp = {
+    initial: { opacity: 0, y: 40, transform: "translate3d(0,40px,0)" },
+    whileInView: { opacity: 1, y: 0, transform: "translate3d(0,0,0)" },
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+    viewport: { once: false, margin: "-120px" },
+  };
+
+  const smoothDown = {
+    initial: { opacity: 0, y: -40, transform: "translate3d(0,-40px,0)" },
+    whileInView: { opacity: 1, y: 0, transform: "translate3d(0,0,0)" },
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+    viewport: { once: false, margin: "-120px" },
+  };
+
+  const smoothLeft = {
+    initial: { opacity: 0, x: -40, transform: "translate3d(-40px,0,0)" },
+    whileInView: { opacity: 1, x: 0, transform: "translate3d(0,0,0)" },
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+    viewport: { once: false, margin: "-120px" },
+  };
+
+  const smoothRight = {
+    initial: { opacity: 0, x: 40, transform: "translate3d(40px,0,0)" },
+    whileInView: { opacity: 1, x: 0, transform: "translate3d(0,0,0)" },
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+    viewport: { once: false, margin: "-120px" },
+  };
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setShowPopup(true);
+
+    setName("");
+    setEmail("");
+    setPhone("");
+    setMessage("");
+
+    setTimeout(() => setShowPopup(false), 3500);
   };
 
   const gradients = [
@@ -24,53 +64,34 @@ export default function Contact() {
     "from-green-500 via-teal-500 to-blue-600",
   ];
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-
-  const [showPopup, setShowPopup] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    setShowPopup(true);
-
-    setName("");
-    setEmail("");
-    setMessage("");
-
-    setTimeout(() => setShowPopup(false), 3500);
-  };
-
   return (
     <section className="relative bg-gradient-to-br from-white via-blue-50 to-indigo-50 py-28 px-6 overflow-hidden">
 
-      {/* Background Glow Upgraded */}
-      <div className="absolute w-[380px] h-[380px] bg-gradient-to-br from-blue-400/30 via-indigo-400/20 to-purple-400/20 blur-[120px] rounded-full -top-40 -left-40"></div>
-      <div className="absolute w-[330px] h-[330px] bg-gradient-to-tr from-purple-300/20 via-blue-300/20 to-indigo-300/20 blur-[130px] rounded-full bottom-0 right-0"></div>
+      {/* Background Glow */}
+      <div className="absolute w-[360px] h-[360px] bg-blue-400/25 blur-[120px] rounded-full -top-40 -left-40"></div>
+      <div className="absolute w-[300px] h-[300px] bg-purple-300/20 blur-[130px] rounded-full bottom-0 right-0"></div>
 
+      {/* MAIN CONTENT */}
       <div className="max-w-7xl mx-auto relative z-10">
 
         {/* Heading */}
         <motion.h2
-          {...fadeUp}
+          {...smoothDown}
           className="text-4xl md:text-5xl font-extrabold text-center mb-4 
           bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 bg-clip-text text-transparent drop-shadow-md"
         >
-          Contact <span className="text-purple-700">Us</span> 
+          Contact <span className="text-purple-700">Us</span>
         </motion.h2>
 
         <motion.p
-          {...fadeUp}
-          transition={{ ...fadeUp.transition, delay: 0.1 }}
+          {...smoothUp}
           className="text-gray-700 text-center max-w-3xl mx-auto mb-20 text-lg"
         >
-          Have a project in mind or want to collaborate? Our team is ready to help
-          you build something remarkable.
+          Have a project in mind? Our team is excited to bring your vision to life.
         </motion.p>
 
         {/* TEAM CARDS */}
-        <div className="grid md:grid-cols-3 gap-10 mb-20">
+        <div className="grid md:grid-cols-3 gap-10 mb-24">
           {[
             { name: "Naveen Sharma", role: "Project Manager", email: "naveen@example.com" },
             { name: "Rahul Mehta", role: "Lead Developer", email: "rahul@example.com" },
@@ -78,9 +99,9 @@ export default function Contact() {
           ].map((member, i) => (
             <motion.div
               key={i}
-              {...fadeUp}
-              transition={{ ...fadeUp.transition, delay: i * 0.15 }}
-              className="relative bg-white/75 backdrop-blur-xl rounded-2xl p-8 pt-16 shadow-xl border border-blue-100 
+              {...(i % 2 === 0 ? smoothLeft : smoothRight)}
+              transition={{ delay: i * 0.15 }}
+              className="relative bg-white/80 backdrop-blur-xl rounded-2xl p-8 pt-16 shadow-xl border border-blue-100 
               hover:-translate-y-2 hover:shadow-blue-300/40 transition-all overflow-visible"
             >
               <div
@@ -113,86 +134,98 @@ export default function Contact() {
           ))}
         </div>
 
-        {/* CONTACT FORM */}
+        {/* CONTACT FORM ⬇⬇ TWO-COLUMN LAYOUT */}
         <motion.div
-          {...fadeUp}
-          className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-blue-200 p-12 max-w-3xl mx-auto"
+          {...smoothUp}
+          className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl border border-blue-200 p-12 max-w-5xl mx-auto"
         >
-          <h3 className="text-3xl font-extrabold mb-8 text-center 
-          bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent drop-shadow">
+          <h3 className="text-3xl font-extrabold mb-10 text-center 
+            bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent drop-shadow">
             Send Us a Message
           </h3>
 
-          <form className="space-y-8" onSubmit={handleSubmit}>
-            
-            {/* NAME */}
-            <div className="relative">
-              <FaUserTie className="absolute left-4 top-4 text-blue-500 text-xl" />
-              <input
-                required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                type="text"
-                className="peer w-full pl-12 pr-4 py-3 border border-blue-300 rounded-lg outline-none bg-white
-                focus:border-blue-600 focus:ring-2 focus:ring-blue-300 transition"
-              />
-              <label className="absolute left-12 top-3 text-gray-500 text-sm transition-all 
-              peer-focus:text-blue-600 peer-focus:-top-5 peer-focus:text-xs 
-              peer-valid:-top-5 peer-valid:text-xs bg-white px-1">
-                Your Name
-              </label>
+          <form className="grid md:grid-cols-2 gap-10" onSubmit={handleSubmit}>
+
+            {/* LEFT COLUMN */}
+            <div className="space-y-8">
+
+              {/* NAME */}
+              <div className="relative">
+                <FaUserTie className="absolute left-4 top-4 text-blue-500 text-xl" />
+                <input
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  type="text"
+                  placeholder="Your Name"
+                  className="w-full pl-12 pr-4 py-3 border border-blue-300 rounded-lg bg-white outline-none
+                  focus:border-blue-600 focus:ring-2 focus:ring-blue-200 transition"
+                />
+              </div>
+
+              {/* EMAIL */}
+              <div className="relative">
+                <FaEnvelope className="absolute left-4 top-4 text-blue-500 text-xl" />
+                <input
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  type="email"
+                  placeholder="Email Address"
+                  className="w-full pl-12 pr-4 py-3 border border-blue-300 rounded-lg bg-white outline-none
+                  focus:border-blue-600 focus:ring-2 focus:ring-blue-200 transition"
+                />
+              </div>
             </div>
 
-            {/* EMAIL */}
-            <div className="relative">
-              <FaEnvelope className="absolute left-4 top-4 text-blue-500 text-xl" />
-              <input
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                type="email"
-                className="peer w-full pl-12 pr-4 py-3 border border-blue-300 rounded-lg outline-none bg-white
-                focus:border-blue-600 focus:ring-2 focus:ring-blue-300 transition"
-              />
-              <label className="absolute left-12 top-3 text-gray-500 text-sm transition-all 
-              peer-focus:text-blue-600 peer-focus:-top-5 peer-focus:text-xs 
-              peer-valid:-top-5 peer-valid:text-xs bg-white px-1">
-                Email Address
-              </label>
+            {/* RIGHT COLUMN */}
+            <div className="space-y-8">
+
+              {/* PHONE */}
+              <div className="relative">
+                <FaPhoneAlt className="absolute left-4 top-4 text-blue-500 text-xl" />
+                <input
+                  required
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  type="tel"
+                  placeholder="Phone Number"
+                  className="w-full pl-12 pr-4 py-3 border border-blue-300 rounded-lg bg-white outline-none
+                  focus:border-blue-600 focus:ring-2 focus:ring-blue-200 transition"
+                />
+              </div>
+
+              {/* MESSAGE */}
+              <div className="relative">
+                <textarea
+                  required
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  rows="4"
+                  placeholder="Your Message"
+                  className="w-full pl-4 pr-4 py-3 border border-blue-300 rounded-lg bg-white outline-none
+                  focus:border-blue-600 focus:ring-2 focus:ring-blue-200 transition"
+                ></textarea>
+              </div>
+
             </div>
 
-            {/* MESSAGE */}
-            <div className="relative">
-              <FaPhoneAlt className="absolute left-4 top-4 text-blue-500 text-xl" />
-              <textarea
-                required
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                rows="5"
-                className="peer w-full pl-12 pr-4 py-3 border border-blue-300 rounded-lg outline-none bg-white
-                focus:border-blue-600 focus:ring-2 focus:ring-blue-300 transition"
-              ></textarea>
-              <label className="absolute left-12 top-3 text-gray-500 text-sm transition-all 
-              peer-focus:text-blue-600 peer-focus:-top-5 peer-focus:text-xs 
-              peer-valid:-top-5 peer-valid:text-xs bg-white px-1">
-                Your Message
-              </label>
+            {/* SUBMIT BUTTON */}
+            <div className="md:col-span-2 mt-6">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                className="w-full py-4 text-white text-lg font-semibold rounded-xl shadow-lg
+                bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 transition"
+              >
+                Send Message
+              </motion.button>
             </div>
 
-            {/* BUTTON */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              className="w-full py-4 text-white font-semibold rounded-xl shadow-lg
-              bg-gradient-to-r from-blue-600 to-indigo-700
-              hover:from-blue-700 hover:to-indigo-800 transition"
-            >
-              Send Message
-            </motion.button>
           </form>
         </motion.div>
       </div>
 
-      {/* SUCCESS POPUP (Upgraded) */}
+      {/* SUCCESS POPUP */}
       <AnimatePresence>
         {showPopup && (
           <motion.div
@@ -201,7 +234,6 @@ export default function Contact() {
             exit={{ opacity: 0 }}
             className="fixed top-0 left-0 w-full h-full bg-black/40 backdrop-blur-sm flex items-center justify-center z-[999]"
           >
-            {/* POPUP CARD */}
             <motion.div
               initial={{ scale: 0.7, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -210,12 +242,8 @@ export default function Contact() {
               className="relative bg-white/90 backdrop-blur-xl p-10 rounded-[30px] border border-blue-300 
               shadow-2xl max-w-sm w-full text-center"
             >
-              {/* Floating Confetti Glow */}
-              <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-300/20 via-indigo-300/20 to-purple-300/20 blur-2xl rounded-[30px]"></div>
-
               <FaCheckCircle className="text-green-500 text-7xl mx-auto mb-4 drop-shadow-lg" />
-
-              <h3 className="text-2xl font-bold text-blue-700 drop-shadow-sm">Thank You!</h3>
+              <h3 className="text-2xl font-bold text-blue-700">Thank You!</h3>
               <p className="text-gray-600 mt-2 text-sm">
                 Your message has been sent successfully.
               </p>

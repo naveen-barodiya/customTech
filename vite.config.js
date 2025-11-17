@@ -5,4 +5,8 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
   ],
+  server: {
+    historyApiFallback: true
+  }
 })
+

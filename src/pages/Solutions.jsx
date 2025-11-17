@@ -11,100 +11,102 @@ import {
 } from "react-icons/fa";
 
 export default function Solutions() {
-  const fadeUp = {
-    initial: { opacity: 0, y: 60, filter: "blur(6px)" },
-    whileInView: { opacity: 1, y: 0, filter: "blur(0px)" },
-    transition: { duration: 0.9, ease: "easeOut" },
-    viewport: { once: true },
+
+  /* Smooth Animations */
+  const smoothUp = {
+    initial: { opacity: 0, y: 40 },
+    whileInView: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    viewport: { once: false, margin: "-120px" },
+  };
+
+  const smoothDown = {
+    initial: { opacity: 0, y: -40 },
+    whileInView: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    viewport: { once: false, margin: "-120px" },
   };
 
   return (
-    <section className="relative overflow-hidden bg-white py-24 px-6">
+    <section className="relative bg-white overflow-hidden">
 
-      {/* BG GLOW */}
-      <div className="absolute w-[350px] h-[350px] bg-blue-200/25 blur-3xl rounded-full -top-40 -left-40"></div>
-      <div className="absolute w-[300px] h-[300px] bg-blue-100/20 blur-3xl bottom-0 right-0"></div>
+      {/* 🎥 HERO VIDEO SECTION */}
+      <div className="relative h-[55vh] flex items-center justify-center text-center overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          src="https://media.istockphoto.com/id/884005050/video/chief-industrial-engineer-has-meeting-with-management-and-executives-in-the-heavy-industry.mp4?s=mp4-640x640-is&k=20&c=J8Q_EAcGsoSqhFlajk6QVd-BX53V6sL7u7t1koxOKiQ="
+          className="absolute inset-0 w-full h-full object-cover blur-[3px]"
+        />
+        <div className="absolute inset-0 bg-black/50"></div>
 
-      {/* BUBBLES */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(10)].map((_, i) => (
-          <div key={i} className="bubble"></div>
-        ))}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="relative z-10 px-6"
+        >
+          <motion.h2
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 1 }}
+            className="
+              text-4xl md:text-5xl font-extrabold mb-4
+              bg-gradient-to-r from-blue-200 via-indigo-200 to-purple-200
+              bg-clip-text text-transparent
+            "
+          >
+            Our Digital Solutions
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="text-gray-200 text-lg max-w-2xl mx-auto"
+          >
+            Scalable, automated & intelligent ecosystems built for modern businesses.
+          </motion.p>
+        </motion.div>
       </div>
 
-      <style>{`
-        .bubble {
-          position: absolute;
-          bottom: -150px;
-          width: 24px;
-          height: 24px;
-          background: rgba(59, 130, 246, 0.15);
-          border-radius: 50%;
-          animation: floatUp 20s infinite ease-in-out;
-        }
-        @keyframes floatUp {
-          0% { transform: translateY(0) scale(1); opacity:0.3; }
-          50% { opacity:0.7; }
-          100% { transform: translateY(-130vh) scale(1.4); opacity:0; }
-        }
-      `}</style>
+      {/* MAIN CONTENT */}
+      <div className="max-w-7xl mx-auto px-6 py-24 relative z-10">
 
-      {/* MAIN START */}
-      <div className="max-w-7xl mx-auto relative z-10">
-
-        {/* ⭐ UPDATED GRADIENT TITLE BLOCK ⭐ */}
+        {/* TITLE BLOCK */}
         <motion.div
-          {...fadeUp}
-          className="rounded-3xl p-10 mb-16 shadow-lg"
-          style={{
-            background:
-              "linear-gradient(135deg, #dbeafe 0%, #bfdbfe 40%, #93c5fd 100%)",
-          }}
+          {...smoothUp}
+          className="rounded-3xl p-10 mb-16 shadow-lg bg-gradient-to-br from-blue-100 to-indigo-200"
         >
           <h2
             className="
               text-4xl md:text-5xl font-extrabold text-center mb-6
               bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600
-              bg-clip-text text-transparent drop-shadow-sm
+              bg-clip-text text-transparent
             "
           >
-            Our Digital <span className="text-purple-700">Solutions</span> 
+            Digital <span className="text-purple-700">Ecosystem</span> Engineering
           </h2>
 
           <p className="text-gray-700 text-center max-w-3xl mx-auto text-lg">
-            We build powerful, scalable and dynamic digital ecosystems tailored
-            for automation, performance, and business acceleration.
+            Powerful, scalable systems built with automation and cloud-native architecture.
           </p>
         </motion.div>
 
         {/* SMALL CARDS */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-20">
           {[
-            {
-              icon: <FaCogs />,
-              title: "CRM & HRMS",
-              desc: "Automated workflows & business logic powered systems.",
-            },
-            {
-              icon: <FaHeartbeat />,
-              title: "Wellness Apps",
-              desc: "Fitness, meditation, lifestyle & habit-building apps.",
-            },
-            {
-              icon: <FaBook />,
-              title: "Learning Systems",
-              desc: "Gamified learning tools with quizzes & analytics.",
-            },
-            {
-              icon: <FaBuilding />,
-              title: "B2B / B2C Platforms",
-              desc: "Vendor systems, order management & marketplaces.",
-            },
+            { icon: <FaCogs />, title: "CRM & HRMS", desc: "Automated enterprise logic." },
+            { icon: <FaHeartbeat />, title: "Wellness Apps", desc: "Fitness & lifestyle platforms." },
+            { icon: <FaBook />, title: "Learning Systems", desc: "Gamified learning ecosystem." },
+            { icon: <FaBuilding />, title: "B2B / B2C Platforms", desc: "Vendor & marketplace systems." },
           ].map((item, i) => (
             <motion.div
               key={i}
-              {...fadeUp}
-              transition={{ ...fadeUp.transition, delay: i * 0.15 }}
+              {...smoothUp}
+              transition={{ delay: i * 0.15 }}
               className="p-6 bg-white rounded-2xl shadow-lg border border-blue-100 hover:-translate-y-2 transition-all"
             >
               <h3 className="flex items-center gap-2 text-lg font-bold text-blue-700 mb-3">
@@ -118,7 +120,7 @@ export default function Solutions() {
 
         {/* LARGE CONTENT */}
         <motion.div
-          {...fadeUp}
+          {...smoothUp}
           className="bg-white p-10 rounded-3xl shadow-lg border border-blue-100 mb-20"
         >
           <h3 className="text-2xl font-bold text-blue-700 mb-4">
@@ -126,61 +128,59 @@ export default function Solutions() {
           </h3>
 
           <p className="text-gray-700 leading-relaxed text-lg mb-6">
-            Automation, intelligent workflows, cloud-driven architecture, and
-            real-time insights—our engineering ensures performance and
-            scalability at every stage.
+            Automation, cloud-driven architecture & real-time business intelligence.
           </p>
 
-          <ul className="space-y-3 text-gray-700 text-lg">
+          <ul className="space-y-2 text-gray-700 text-lg leading-tight">
             <li>✔ Real-time analytics dashboards</li>
             <li>✔ Workflow automation engines</li>
             <li>✔ Modular, cloud-native systems</li>
             <li>✔ Multi-device optimized experiences</li>
-            <li>✔ High-security authentication & roles</li>
+            <li>✔ Secure authentication & roles</li>
           </ul>
         </motion.div>
 
         {/* WHY CHOOSE US */}
-        <motion.div {...fadeUp} className="grid md:grid-cols-3 gap-14 mb-20">
+        <motion.div {...smoothUp} className="grid md:grid-cols-3 gap-10 mb-24">
           {[
             {
               icon: <FaShieldAlt />,
               gradient: "from-red-400 via-pink-500 to-rose-500",
               title: "Security First",
-              desc: "Secure API, encrypted workflows & enterprise-grade compliance.",
+              desc: "Encrypted workflows & enterprise compliance."
             },
             {
               icon: <FaCloud />,
               gradient: "from-blue-400 via-indigo-500 to-purple-500",
               title: "Cloud Optimized",
-              desc: "Auto-scaling, load-balanced & high-speed cloud performance.",
+              desc: "Auto-scaling & high availability."
             },
             {
               icon: <FaChartPie />,
               gradient: "from-green-400 via-teal-500 to-cyan-500",
               title: "Analytics Driven",
-              desc: "Real-time BI insights & reporting systems for better decisions.",
-            },
+              desc: "Real-time KPIs & insight dashboards."
+            }
           ].map((item, i) => (
             <motion.div
               key={i}
-              {...fadeUp}
-              transition={{ ...fadeUp.transition, delay: i * 0.15 }}
-              className="bg-white p-10 rounded-3xl shadow-lg border border-blue-100 relative overflow-visible hover:-translate-y-2 transition-all"
+              {...smoothUp}
+              transition={{ delay: i * 0.15 }}
+              className="bg-white p-10 rounded-3xl shadow-lg border border-blue-100 relative hover:-translate-y-2 transition"
             >
               {/* Floating Icon */}
               <motion.div
                 initial={{ scale: 0.8, y: -10, opacity: 0 }}
-                whileInView={{ scale: 1, y: -20, opacity: 1 }}
+                whileInView={{ scale: 1, y: -18, opacity: 1 }}
                 transition={{ duration: 0.6 }}
                 className={`absolute -top-6 left-1/2 -translate-x-1/2 
-                           w-16 h-16 rounded-full bg-gradient-to-br ${item.gradient}
-                           flex items-center justify-center shadow-xl`}
+                  w-14 h-14 rounded-full bg-gradient-to-br ${item.gradient}
+                  flex items-center justify-center shadow-xl`}
               >
                 <motion.div
                   animate={{ rotate: [0, 10, -10, 0] }}
                   transition={{ repeat: Infinity, duration: 3 }}
-                  className="text-white text-2xl"
+                  className="text-white text-xl"
                 >
                   {item.icon}
                 </motion.div>
@@ -196,143 +196,117 @@ export default function Solutions() {
           ))}
         </motion.div>
       </div>
-      {/* ===================== BUSINESS PROCESS AUTOMATION ===================== */}
-<motion.div
-  {...fadeUp}
-  className="mt-24"
->
 
-  {/* SECTION TITLE */}
-  <motion.h2
-    {...fadeUp}
-    className="
-      text-4xl md:text-5xl font-extrabold text-center mb-10
-      bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600
-      bg-clip-text text-transparent
-    "
-  >
-    Business Process Automation
-  </motion.h2>
+      {/* BUSINESS PROCESS AUTOMATION */}
+      <motion.div {...smoothUp} className="mt-10 px-6 pb-28">
 
-  <motion.p
-    {...fadeUp}
-    transition={{ ...fadeUp.transition, delay: 0.1 }}
-    className="text-gray-700 text-center max-w-3xl mx-auto mb-16 text-lg"
-  >
-    Automate workflows, reduce manual work, increase accuracy, and achieve
-    seamless business scalability with enterprise-grade automation.
-  </motion.p>
-
-  {/* AUTOMATION CARDS */}
-  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-14">
-
-    {[
-      {
-        icon: <FaCogs />,
-        gradient: "from-blue-400 via-indigo-500 to-purple-500",
-        title: "Workflow Automation",
-        desc: "Remove manual work with automated multi-step workflows.",
-        list: [
-          "Task Scheduling",
-          "Auto-Notifications",
-          "Workflow Triggers",
-        ],
-      },
-      {
-        icon: <FaHeartbeat />,
-        gradient: "from-pink-400 via-rose-500 to-red-500",
-        title: "AI-Based Decisions",
-        desc: "Automated decision-making engines powered by AI.",
-        list: [
-          "Smart Recommendations",
-          "Predictive Models",
-          "Automated Checks",
-        ],
-      },
-      {
-        icon: <FaChartPie />,
-        gradient: "from-green-400 via-teal-500 to-cyan-500",
-        title: "Analytics Automation",
-        desc: "Real-time reporting & auto-generated business dashboards.",
-        list: [
-          "Auto Data Sync",
-          "Business Insights",
-          "KPI Monitoring",
-        ],
-      },
-      {
-        icon: <FaBuilding />,
-        gradient: "from-purple-400 via-fuchsia-500 to-pink-500",
-        title: "Enterprise Integrations",
-        desc: "Integrate CRMs, ERPs, HRMS & third-party platforms.",
-        list: [
-          "Secure API Linking",
-          "Cloud Sync",
-          "Role-Based Data Access",
-        ],
-      },
-      {
-        icon: <FaCloud />,
-        gradient: "from-blue-400 via-sky-500 to-cyan-500",
-        title: "Cloud Automation",
-        desc: "Auto-scaling, smart resource management & uptime monitoring.",
-        list: [
-          "Auto Scaling",
-          "Backup Automation",
-          "Load Balancing",
-        ],
-      },
-      {
-        icon: <FaShieldAlt />,
-        gradient: "from-red-400 via-rose-500 to-indigo-600",
-        title: "Security Automation",
-        desc: "Automated audits, monitoring & real-time threat detection.",
-        list: [
-          "Auto Threat Alerts",
-          "Role Permissions",
-          "Encrypted Workflows",
-        ],
-      },
-    ].map((item, index) => (
-      <motion.div
-        key={index}
-        {...fadeUp}
-        transition={{ ...fadeUp.transition, delay: index * 0.15 }}
-        className="bg-white p-10 rounded-3xl shadow-lg border border-blue-100 relative overflow-visible hover:-translate-y-2 transition-all"
-      >
-        {/* Floating Icon */}
-        <motion.div
-          initial={{ scale: 0.8, y: -10, opacity: 0 }}
-          whileInView={{ scale: 1, y: -20, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className={`absolute -top-6 left-1/2 -translate-x-1/2 
-                      w-16 h-16 rounded-full bg-gradient-to-br ${item.gradient}
-                      flex items-center justify-center shadow-xl`}
+        <motion.h2
+          {...smoothDown}
+          className="
+            text-4xl md:text-5xl font-extrabold text-center mb-10
+            bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600
+            bg-clip-text text-transparent
+          "
         >
-          <motion.div
-            animate={{ rotate: [0, 10, -10, 0] }}
-            transition={{ repeat: Infinity, duration: 3 }}
-            className="text-white text-2xl"
-          >
-            {item.icon}
-          </motion.div>
-        </motion.div>
+          Business Process Automation
+        </motion.h2>
 
-        <div className="mt-12 text-center">
-          <h4 className="text-xl font-bold text-blue-700 mb-2">{item.title}</h4>
-          <p className="text-gray-600 mb-4">{item.desc}</p>
-          <ul className="text-gray-600 space-y-2 text-sm">
-            {item.list.map((l, i) => (
-              <li key={i}>✔ {l}</li>
-            ))}
-          </ul>
+        <motion.p
+          {...smoothUp}
+          transition={{ delay: 0.1 }}
+          className="text-gray-700 text-center max-w-3xl mx-auto mb-16 text-lg"
+        >
+          Automate workflows & boost operational efficiency.
+        </motion.p>
+
+        {/* FIXED CARDS (Overflow Issue Solved) */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 mb-24">
+          {[
+            {
+              icon: <FaCogs />,
+              gradient: "from-blue-400 via-indigo-500 to-purple-500",
+              title: "Workflow Automation",
+              desc: "Automate tasks with multi-step workflows.",
+              list: ["Task Scheduling", "Auto-Notifications", "Triggers"],
+            },
+            {
+              icon: <FaHeartbeat />,
+              gradient: "from-pink-400 via-rose-500 to-red-500",
+              title: "AI Decisions",
+              desc: "Predictive & intelligent automation.",
+              list: ["Recommendations", "Prediction Models", "Auto Checks"],
+            },
+            {
+              icon: <FaChartPie />,
+              gradient: "from-green-400 via-teal-500 to-cyan-500",
+              title: "Analytics Automation",
+              desc: "Real-time auto-generated dashboards.",
+              list: ["Auto Sync", "Insights", "KPI Monitoring"],
+            },
+            {
+              icon: <FaBuilding />,
+              gradient: "from-purple-400 via-fuchsia-500 to-pink-500",
+              title: "Enterprise Integrations",
+              desc: "Integrate ERPs, HRMS, CRM & more.",
+              list: ["Secure API", "Cloud Sync", "Role-Based Access"],
+            },
+            {
+              icon: <FaCloud />,
+              gradient: "from-blue-400 via-sky-500 to-cyan-500",
+              title: "Cloud Automation",
+              desc: "Smart cloud scaling & uptime",
+              list: ["Scaling", "Backups", "Load Balancing"],
+            },
+            {
+              icon: <FaShieldAlt />,
+              gradient: "from-red-400 via-rose-500 to-indigo-600",
+              title: "Security Automation",
+              desc: "Threat detection & encrypted workflows.",
+              list: ["Alerts", "Permissions", "Encryption"],
+            },
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              {...smoothUp}
+              transition={{ delay: index * 0.12 }}
+              className="bg-white p-8 py-10 rounded-3xl shadow-lg border border-blue-100 
+                          relative hover:-translate-y-2 transition-all"
+            >
+              {/* Floating Icon */}
+              <motion.div
+                initial={{ scale: 0.8, y: -10, opacity: 0 }}
+                whileInView={{ scale: 1, y: -18, opacity: 1 }}
+                transition={{ duration: 0.6 }}
+                className={`absolute -top-6 left-1/2 -translate-x-1/2 
+                  w-14 h-14 rounded-full bg-gradient-to-br ${item.gradient}
+                  flex items-center justify-center shadow-xl`}
+              >
+                <motion.div
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ repeat: Infinity, duration: 3 }}
+                  className="text-white text-xl"
+                >
+                  {item.icon}
+                </motion.div>
+              </motion.div>
+
+              <div className="mt-12 text-center">
+                <h4 className="text-xl font-bold text-blue-700 mb-3">{item.title}</h4>
+
+                <p className="text-gray-600 mb-3 text-sm leading-relaxed">
+                  {item.desc}
+                </p>
+
+                <ul className="text-gray-600 space-y-1.5 text-sm leading-tight">
+                  {item.list.map((l, i) => (
+                    <li key={i}>✔ {l}</li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </motion.div>
-    ))}
-
-  </div>
-</motion.div>
-
     </section>
   );
 }
