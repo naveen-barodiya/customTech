@@ -17,31 +17,31 @@ import {
 } from "react-icons/fa";
 
 export default function Home() {
-  // 🚀 BUTTER-SMOOTH ANIMATION SYSTEM
+  // 🚀 FIXED BUTTER-SMOOTH ANIMATION SYSTEM
   const smooth = {
-    initial: { opacity: 0, y: 40, transform: "translate3d(0,40px,0)" },
-    whileInView: { opacity: 1, y: 0, transform: "translate3d(0,0,0)" },
+    initial: { opacity: 0, y: 40 },
+    whileInView: { opacity: 1, y: 0 },
     transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
     viewport: { once: false, margin: "-120px" },
   };
 
   const smoothLeft = {
-    initial: { opacity: 0, x: -40, transform: "translate3d(-40px,0,0)" },
-    whileInView: { opacity: 1, x: 0, transform: "translate3d(0,0,0)" },
+    initial: { opacity: 0, x: -40 },
+    whileInView: { opacity: 1, x: 0 },
     transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
     viewport: { once: false, margin: "-120px" },
   };
 
   const smoothRight = {
-    initial: { opacity: 0, x: 40, transform: "translate3d(40px,0,0)" },
-    whileInView: { opacity: 1, x: 0, transform: "translate3d(0,0,0)" },
+    initial: { opacity: 0, x: 40 },
+    whileInView: { opacity: 1, x: 0 },
     transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
     viewport: { once: false, margin: "-120px" },
   };
 
   const smoothDown = {
-    initial: { opacity: 0, y: -40, transform: "translate3d(0,-40px,0)" },
-    whileInView: { opacity: 1, y: 0, transform: "translate3d(0,0,0)" },
+    initial: { opacity: 0, y: -40 },
+    whileInView: { opacity: 1, y: 0 },
     transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
     viewport: { once: false, margin: "-120px" },
   };

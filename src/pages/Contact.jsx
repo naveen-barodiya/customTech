@@ -11,31 +11,31 @@ import {
 } from "react-icons/fa";
 
 export default function Contact() {
-  /* 🚀 BUTTER-SMOOTH ANIMATION SYSTEM */
+  /* 🚀 BUTTER-SMOOTH ANIMATION SYSTEM (FIXED — no transform conflict) */
   const smoothUp = {
-    initial: { opacity: 0, y: 40, transform: "translate3d(0,40px,0)" },
-    whileInView: { opacity: 1, y: 0, transform: "translate3d(0,0,0)" },
+    initial: { opacity: 0, y: 40 },
+    whileInView: { opacity: 1, y: 0 },
     transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
     viewport: { once: false, margin: "-120px" },
   };
 
   const smoothDown = {
-    initial: { opacity: 0, y: -40, transform: "translate3d(0,-40px,0)" },
-    whileInView: { opacity: 1, y: 0, transform: "translate3d(0,0,0)" },
+    initial: { opacity: 0, y: -40 },
+    whileInView: { opacity: 1, y: 0 },
     transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
     viewport: { once: false, margin: "-120px" },
   };
 
   const smoothLeft = {
-    initial: { opacity: 0, x: -40, transform: "translate3d(-40px,0,0)" },
-    whileInView: { opacity: 1, x: 0, transform: "translate3d(0,0,0)" },
+    initial: { opacity: 0, x: -40 },
+    whileInView: { opacity: 1, x: 0 },
     transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
     viewport: { once: false, margin: "-120px" },
   };
 
   const smoothRight = {
-    initial: { opacity: 0, x: 40, transform: "translate3d(40px,0,0)" },
-    whileInView: { opacity: 1, x: 0, transform: "translate3d(0,0,0)" },
+    initial: { opacity: 0, x: 40 },
+    whileInView: { opacity: 1, x: 0 },
     transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
     viewport: { once: false, margin: "-120px" },
   };
@@ -134,7 +134,7 @@ export default function Contact() {
           ))}
         </div>
 
-        {/* CONTACT FORM ⬇⬇ TWO-COLUMN LAYOUT */}
+        {/* CONTACT FORM */}
         <motion.div
           {...smoothUp}
           className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl border border-blue-200 p-12 max-w-5xl mx-auto"
@@ -148,8 +148,6 @@ export default function Contact() {
 
             {/* LEFT COLUMN */}
             <div className="space-y-8">
-
-              {/* NAME */}
               <div className="relative">
                 <FaUserTie className="absolute left-4 top-4 text-blue-500 text-xl" />
                 <input
@@ -163,7 +161,6 @@ export default function Contact() {
                 />
               </div>
 
-              {/* EMAIL */}
               <div className="relative">
                 <FaEnvelope className="absolute left-4 top-4 text-blue-500 text-xl" />
                 <input
@@ -180,8 +177,6 @@ export default function Contact() {
 
             {/* RIGHT COLUMN */}
             <div className="space-y-8">
-
-              {/* PHONE */}
               <div className="relative">
                 <FaPhoneAlt className="absolute left-4 top-4 text-blue-500 text-xl" />
                 <input
@@ -195,7 +190,6 @@ export default function Contact() {
                 />
               </div>
 
-              {/* MESSAGE */}
               <div className="relative">
                 <textarea
                   required
@@ -207,7 +201,6 @@ export default function Contact() {
                   focus:border-blue-600 focus:ring-2 focus:ring-blue-200 transition"
                 ></textarea>
               </div>
-
             </div>
 
             {/* SUBMIT BUTTON */}
