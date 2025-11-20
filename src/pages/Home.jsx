@@ -148,13 +148,13 @@ export default function Home() {
               title: "eCommerce",
               icon: <FaShoppingCart />,
               desc: "High-performance online stores optimized for conversions.",
-              list: ["Shopify/WooCommerce", "AI Recommendations", "Payment Gateways", "Order Dashboard", "Mobile Integration"],
+              list: [ "AI Recommendations", "Payment Gateways", "Order Dashboard", "Mobile Integration"],
             },
             {
               title: "Enterprise Solutions",
               icon: <FaBuilding />,
               desc: "Large-scale workflow automation for scaling companies.",
-              list: ["CRM, HRMS, ATS", "Cloud Integrations", "Automation Tools", "Dashboards", "Role-Based Access"],
+              list: [ "Cloud Integrations", "Automation Tools", "Dashboards", "Role-Based Access"],
             },
           ].map((industry, i) => (
             <motion.div

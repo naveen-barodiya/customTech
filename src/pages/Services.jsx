@@ -8,6 +8,8 @@ import {
   FaPenNib,
   FaShieldAlt,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 
 export default function Services() {
   /* ================================
@@ -141,7 +143,7 @@ export default function Services() {
                 {...animation}
                 className="service-card relative bg-white rounded-2xl p-10 shadow-lg border border-blue-100"
               >
-                
+
                 {/* Floating Icon */}
                 <div
                   className={`absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 
@@ -172,17 +174,86 @@ export default function Services() {
           })}
 
           {/* Explore More Card */}
-          <motion.div
-            {...buttery}
-            className="service-card bg-white rounded-2xl p-10 shadow-lg border border-blue-200 cursor-pointer"
-          >
-            <h3 className="text-xl font-bold text-blue-700">
-              Explore More Services →
-            </h3>
-            <p className="text-gray-700 text-sm mt-3">
-              Discover advanced automation & cloud solutions.
-            </p>
-          </motion.div>
+          <Link to="/advanced-ecommerce">
+            <motion.div
+              {...buttery}
+              className="
+      service-card 
+      relative
+      bg-gradient-to-br from-blue-700 to-indigo-700 
+      rounded-3xl 
+      p-12 
+      shadow-2xl 
+      border border-blue-300/50 
+      cursor-pointer
+      min-h-[230px]
+      flex flex-col items-center justify-center
+      overflow-hidden
+      group
+      hover:scale-105
+      transition-all duration-300
+
+    "
+            >
+
+              {/* GLOW BACKGROUND CIRCLE */}
+              <div
+                className="
+        absolute w-56 h-56 rounded-full 
+        bg-blue-400/20 blur-3xl 
+        -top-10 -left-10 
+        group-hover:scale-125 transition-all duration-500
+      "
+              ></div>
+
+              <div
+                className="
+        absolute w-56 h-56 rounded-full 
+        bg-purple-500/20 blur-3xl 
+        -bottom-10 -right-10 
+        group-hover:scale-125 transition-all duration-500
+      "
+              ></div>
+
+              {/* TOP BADGE */}
+
+              {/* MAIN TEXT */}
+              <h3
+                className="
+        text-2xl 
+        md:text-3xl 
+        font-extrabold 
+        text-white text-center
+        drop-shadow-lg
+      "
+              >
+                Explore Advanced
+                <br /> eCommerce Services →
+              </h3>
+
+              {/* SUBTEXT */}
+              <p
+                className="
+        text-white/90 text-sm mt-4 text-center 
+        max-w-xs leading-relaxed
+      "
+              >
+                Unlock next-gen automation, intelligence, multi-vendor systems & more.
+              </p>
+
+              {/* HOVER EFFECT */}
+              <div
+                className="
+        absolute inset-0 rounded-3xl 
+        border border-white/20 
+        opacity-0 group-hover:opacity-100 
+        transition duration-500
+      "
+              ></div>
+            </motion.div>
+          </Link>
+
+
         </div>
       </div>
 

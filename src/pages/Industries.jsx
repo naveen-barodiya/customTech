@@ -179,7 +179,6 @@ const smoothDown = {
                 title: "Enterprise Systems",
                 desc: "Enterprise-grade workflow automation platforms.",
                 list: [
-                  "CRM / HRMS / ATS",
                   "Automation Systems",
                   "Role-Based Access",
                   "B2B / B2C Platforms",

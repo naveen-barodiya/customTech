@@ -8,7 +8,7 @@ import Services from './pages/Services'
 import Solutions from './pages/Solutions'
 import './index.css'
 import Contact from './pages/Contact'
-
+import AdvancedEcommerce from "./pages/AdvancedEcommerce";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,6 +19,7 @@ const router = createBrowserRouter([
       { path: "/services", element: <Services /> },
       { path: "/solutions", element: <Solutions /> },
       { path: "/contact", element: <Contact /> }, 
+      {path: "/advanced-ecommerce", element:<AdvancedEcommerce />},
     ]
   }
 ]);
