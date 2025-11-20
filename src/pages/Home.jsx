@@ -199,7 +199,7 @@ export default function Home() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {[
-            { title: "CRM & HRMS Platforms", icon: <FaCogs />, desc: "Smarter employee & customer management.", list: ["Smart Dashboards", "Role-based Access", "Automation"] },
+            
             { title: "Wellness & Fitness Apps", icon: <FaHeartbeat />, desc: "Engaging lifestyle apps with progress tracking.", list: ["Activity Tracking", "Diet Plans", "Analytics"] },
             { title: "Learning Platforms", icon: <FaBook />, desc: "Gamified learning systems for education.", list: ["Gamified Quizzes", "Course Manager", "Progress Charts"] },
             { title: "B2B & B2C Portals", icon: <FaChartLine />, desc: "Scalable multi-layered marketplaces.", list: ["Vendor Panels", "Order Workflows", "Payments"] },
