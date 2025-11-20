@@ -100,7 +100,6 @@ export default function AdvancedEcommerce() {
                 <li>✔ Smart product search</li>
                 <li>✔ Secure payment systems</li>
                 <li>✔ Mobile app connectivity</li>
-                <li>✔ CRM • Influencer tools • WMS • Custom admin panel</li>
               </ul>
             </motion.div>
           </div>
@@ -141,7 +140,6 @@ export default function AdvancedEcommerce() {
                 <li>✔ Chatbots & AI</li>
                 <li>✔ Automated marketing</li>
                 <li>✔ Dynamic product recommendations</li>
-                <li>✔ CRM sync</li>
               </ul>
             </motion.div>
 
