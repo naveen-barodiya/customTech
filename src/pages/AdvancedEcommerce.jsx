@@ -36,7 +36,7 @@ export default function AdvancedEcommerce() {
           loop
           muted
           playsInline
-          src="https://cdn.pixabay.com/video/2025/08/03/295166_large.mp4"
+          src="https://cdn.pixabay.com/video/2021/09/29/90251-620258654_large.mp4"
           className="absolute inset-0 w-full h-full object-cover blur-[2px]"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/70"></div>
