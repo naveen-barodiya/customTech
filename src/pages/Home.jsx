@@ -18,33 +18,57 @@ import {
 
 export default function Home() {
   // 🚀 FIXED BUTTER-SMOOTH ANIMATION SYSTEM
+  // 🧈 SUPER SMOOTH ANIMATION SYSTEM – BUTTERY CLEAN
+  // 🧈 ULTRA BUTTER-SMOOTH ANIMATION ENGINE
   const smooth = {
-    initial: { opacity: 0, y: 40 },
+    initial: { opacity: 0, y: 18 },
     whileInView: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-    viewport: { once: false, margin: "-120px" },
+    transition: {
+      duration: 0.38,
+      ease: [0.22, 1, 0.36, 1],
+      mass: 0.3,
+      damping: 12
+    },
+    viewport: { margin: "-80px", once: false },
   };
 
   const smoothLeft = {
-    initial: { opacity: 0, x: -40 },
+    initial: { opacity: 0, x: -18 },
     whileInView: { opacity: 1, x: 0 },
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-    viewport: { once: false, margin: "-120px" },
+    transition: {
+      duration: 0.38,
+      ease: [0.22, 1, 0.36, 1],
+      mass: 0.3,
+      damping: 12
+    },
+    viewport: { margin: "-80px", once: false },
   };
 
   const smoothRight = {
-    initial: { opacity: 0, x: 40 },
+    initial: { opacity: 0, x: 18 },
     whileInView: { opacity: 1, x: 0 },
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-    viewport: { once: false, margin: "-120px" },
+    transition: {
+      duration: 0.38,
+      ease: [0.22, 1, 0.36, 1],
+      mass: 0.3,
+      damping: 12
+    },
+    viewport: { margin: "-80px", once: false },
   };
 
   const smoothDown = {
-    initial: { opacity: 0, y: -40 },
+    initial: { opacity: 0, y: -18 },
     whileInView: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-    viewport: { once: false, margin: "-120px" },
+    transition: {
+      duration: 0.38,
+      ease: [0.22, 1, 0.36, 1],
+      mass: 0.3,
+      damping: 12
+    },
+    viewport: { margin: "-80px", once: false },
   };
+
+
 
   const gradients = [
     "from-blue-500 to-indigo-600",
